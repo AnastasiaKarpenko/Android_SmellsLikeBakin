@@ -5,11 +5,9 @@
               android:orientation="vertical"
               android:weightSum="1">
 
-    <TextView
-        android:text="yay fragments!"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="146dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

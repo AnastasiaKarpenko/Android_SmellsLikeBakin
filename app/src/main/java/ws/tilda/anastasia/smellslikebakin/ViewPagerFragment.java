@@ -4,22 +4,17 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import java.util.zip.Inflater;
-
-import static ws.tilda.anastasia.smellslikebakin.R.id.viewPager;
 
 
 public class ViewPagerFragment extends Fragment {
 
     public static final String KEY_RECIPE_INDEX = "recipe_index";
+
 
 
     @Nullable
@@ -29,14 +24,13 @@ public class ViewPagerFragment extends Fragment {
         getActivity().setTitle(Recipes.names[index]);
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
-        final IngredientsFragment ingredientsFragment = new IngredientsFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_RECIPE_INDEX, index);
+
+        final IngredientsFragment ingredientsFragment = new IngredientsFragment();
         ingredientsFragment.setArguments(bundle);
 
         final DirectionsFragment directionsFragment = new DirectionsFragment();
-        bundle = new Bundle();
-        bundle.putInt(KEY_RECIPE_INDEX, index);
         directionsFragment.setArguments(bundle);
 
         ViewPager viewPager  = (ViewPager) view.findViewById(R.id.viewPager);

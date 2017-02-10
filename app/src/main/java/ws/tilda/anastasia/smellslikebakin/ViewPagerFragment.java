@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.zip.Inflater;
 
+import static ws.tilda.anastasia.smellslikebakin.R.id.viewPager;
+
 
 public class ViewPagerFragment extends Fragment {
 
@@ -26,11 +28,14 @@ public class ViewPagerFragment extends Fragment {
         getActivity().setTitle(Recipes.names[index]);
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
+        final IngredientsFragment ingredientsFragment = new IngredientsFragment();
+        final DirectionsFragment directionsFragment = new DirectionsFragment();
+
         ViewPager viewPager  = (ViewPager) view.findViewById(R.id.viewPager);
         viewPager.setAdapter(new android.support.v13.app.FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return null;
+                return position == 0 ? ingredientsFragment : directionsFragment;
             }
 
             @Override

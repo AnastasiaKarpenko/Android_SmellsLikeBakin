@@ -3,6 +3,7 @@ package ws.tilda.anastasia.smellslikebakin;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.InflateException;
@@ -38,11 +39,23 @@ public class ViewPagerFragment extends Fragment {
                 return position == 0 ? ingredientsFragment : directionsFragment;
             }
 
+            //To set the titles for the tabs inside the adapter inner class
+
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return position == 0 ? "Ingredients" : "Directions";
+            }
+
             @Override
             public int getCount() {
                 return 2;
             }
         });
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+
         return view;
     }
 

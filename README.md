@@ -9,4 +9,5 @@ Topics learnt:
 - Fragments
 - RecyclerViews
 - ViewPagers
+- Checkboxes
 

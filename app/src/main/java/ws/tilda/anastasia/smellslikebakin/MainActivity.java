@@ -8,7 +8,8 @@ import android.widget.Toast;
 
 import static android.R.attr.fragment;
 
-public class MainActivity extends AppCompatActivity implements ListFragment.OnRecipeSelectedInterface{
+public class MainActivity extends AppCompatActivity
+        implements ListFragment.OnRecipeSelectedInterface, GridFragment.OnRecipeSelectedInterface {
     public static final String LIST_FRAGMENT = "list_fragment ";
     public static final String VIEWPAGER_FRAGMENT = "viewpager_fragment ";
 
@@ -17,15 +18,26 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean isTablet = getResources().getBoolean(R.bool.is_tablet);
+        if(!isTablet) {
+            ListFragment savedFragment = (ListFragment) getFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+            if(savedFragment == null) {
+                ListFragment fragment = new ListFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
+                fragmentTransaction.commit();
+            }
 
-
-        ListFragment savedFragment = (ListFragment) getFragmentManager().findFragmentByTag(LIST_FRAGMENT);
-        if(savedFragment == null) {
-            ListFragment fragment = new ListFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
-            fragmentTransaction.commit();
+        } else {
+            GridFragment savedFragment = (GridFragment) getFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+            if(savedFragment == null) {
+                GridFragment fragment = new GridFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
+                fragmentTransaction.commit();
+            }
         }
     }
 
@@ -40,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnRe
         fragmentTransaction.replace(R.id.placeHolder, fragment, VIEWPAGER_FRAGMENT);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onGridRecipeSelected(int index) {
 
     }
 }

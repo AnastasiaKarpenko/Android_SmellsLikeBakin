@@ -11,3 +11,13 @@ Topics learnt:
 - ViewPagers
 - Checkboxes
 
+Screenshots of the app: 
+
+For phone
+
+![alt tag](https://github.com/AnastasiaKarpenko/Android_SmellsLikeBakin/blob/master/SmellsLikeBakin_phone_screenshot.png)
+
+For tablet
+![alt tag](https://github.com/AnastasiaKarpenko/Android_SmellsLikeBakin/blob/master/SmellsLikeBakin_tablet_screenshot.png)
+
+
